@@ -1,0 +1,15 @@
+<h1>Создание инвентаря</h1>
+<form method="post" action="{{ path('invcreate') }}">
+<select name="player">
+    {% for player in players %}
+    <option value="{{player.id}}">{{player.name}}</option>
+    {% endfor %}
+</select>
+<select name="item">
+    {% for item in items %}
+    <option value="{{item.id}}">{{item.name}}</option>
+    {% endfor %}
+</select>
+<input type="submit" value="Сохранить">
+</form>
+<a href={{path('app_inventory')}}>таблица</a>

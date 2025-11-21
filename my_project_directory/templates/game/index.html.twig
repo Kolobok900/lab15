@@ -1,0 +1,59 @@
+<h1>Список всех игроков</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Имя игрока</th>
+            <th>Уровень</th>
+        </tr>
+    </thead>
+<tbody>
+    {% for player in players %}
+    <tr>
+        <td>{{player.name}}</td>
+        <td>{{player.level}}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+<a href="{{ path('app_player') }}">управление пользователями</a>
+<h1>Список всех предметов</h1>
+<table>
+    <thead>
+        <tr>
+            <th>название предмета</th>
+            <th>редкость</th>
+            <th>цена</th>
+        </tr>
+    </thead>
+<tbody>
+    {% for item in items %}
+    <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.rarity}}</td>
+        <td>{{item.price}}</td>
+        </form></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+<a href="{{ path('app_item') }}">Управление предметами</a>
+<h1>Список всех инвенторей</h1>
+<table>
+    <thead>
+        <tr>
+            <th>игрок</th>
+            <th>предмет</th>
+        </tr>
+    </thead>
+<tbody>
+    {% for inventory in inventories %}
+    <tr>
+        <td>{{inventory.player}}</td>
+        <td>{{inventory.item}}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+<a href="{{ path('app_inventory') }}">Управление инвенторей</a>
+
+

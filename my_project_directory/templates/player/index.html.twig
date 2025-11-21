@@ -1,0 +1,23 @@
+<h1>Список всех игроков</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Имя игрока</th>
+            <th>Уровень</th>
+        </tr>
+    </thead>
+<tbody>
+    {% for player in players %}
+    <tr>
+        <td>{{player.name}}</td>
+        <td>{{player.level}}</td>
+    <td><a href="{{ path('pupdateform', {'player':player.id}) }}">обновить</a></td>
+    <td><form action="{{ path('player_delete', {'player':player.id}) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit">удалить</button>
+        </form></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+<a href="{{ path('pformcreate') }}">Перейти на страницу создания пользователя</a>

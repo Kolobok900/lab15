@@ -1,0 +1,25 @@
+<h1>Список всех предметов</h1>
+<table>
+    <thead>
+        <tr>
+            <th>название предмета</th>
+            <th>редкость</th>
+            <th>цена</th>
+        </tr>
+    </thead>
+<tbody>
+    {% for item in items %}
+    <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.rarity}}</td>
+        <td>{{item.price}}</td>
+    <td><a href="{{ path('iupdateform', {'item':item.id}) }}">обновить</a></td>
+    <td><form action="{{ path('item_delete', {'item':item.id}) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit">удалить</button>
+        </form></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+<a href="{{ path('iformcreate') }}">Перейти на страницу создания предмета</a>

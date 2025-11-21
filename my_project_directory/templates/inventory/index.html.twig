@@ -1,0 +1,28 @@
+<h1>Список всех инвенторей</h1>
+<table>
+    <thead>
+        <tr>
+            <th>игрок</th>
+            <th>предмет</th>
+        </tr>
+    </thead>
+<tbody>
+    {% for inventory in inventories %}
+    <tr>
+        <td>{{inventory.player}}</td>
+        <td>{{inventory.item}}</td>
+    <td><a href="{{ path('invupdateform', {'id': inventory.id}) }}">обновить</a></td>
+    <td><form action="{{ path('inventory_delete', {'id': inventory.id}) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit">удалить</button>
+        </form></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+<div>
+<a href="{{ path('invformcreate') }}">Перейти на страницу создания предмета</a>
+</div>
+<div>
+<a href="{{ path('downloadinv') }}">скачать данные инвенторей</a>
+</div>
