@@ -41,7 +41,7 @@ final class ItemController extends AbstractController
         }
         $entityManager->persist($item);
         $entityManager->flush();
-        return new Response('Успешно добавлен предмет с названием: ' . $item->getName());
+        return $this->redirectToRoute('app_item');
     }
     #[Route('/item/updateform/{item}', name: 'iupdateform', methods: 'GET')]
     public function formUpdate(Item $item)
@@ -63,13 +63,13 @@ final class ItemController extends AbstractController
             ]);
         }
         $entityManager->flush();
-        return new Response("Успешно обновлен предмет с названием: " . $item->getName());
+        return $this->redirectToRoute('app_item');
     }
     #[Route('/item/delete/{item}', name: 'item_delete', methods: 'DELETE')]
     public function delete(Item $item, EntityManagerInterface $entityManager): Response
     {
         $entityManager->remove($item);
         $entityManager->flush();
-        return new Response("Успешно удален предмет с названием: " . $item->getName());
+        return $this->redirectToRoute('app_item');
     }
 }

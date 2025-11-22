@@ -40,7 +40,7 @@ final class PlayerController extends AbstractController
         }
         $entityManager->persist($player);
         $entityManager->flush();
-        return new Response('Успешно добавлен пользователь с именем: ' . $player->getName());
+        return $this->redirectToRoute('app_player');
     }
     #[Route('/player/updateform/{player}', name: 'pupdateform', methods: 'GET')]
     public function formUpdate(Player $player)
@@ -61,13 +61,13 @@ final class PlayerController extends AbstractController
             ]);
         }
         $entityManager->flush();
-        return new Response("Успешно обновлен пользователь с именем: " . $player->getName());
+        return $this->redirectToRoute('app_player');
     }
     #[Route('/player/delete/{player}', name: 'player_delete', methods: 'DELETE')]
     public function delete(Player $player, EntityManagerInterface $entityManager): Response
     {
         $entityManager->remove($player);
         $entityManager->flush();
-        return new Response("Успешно удален пользователь с именем: " . $player->getName());
+        return $this->redirectToRoute('app_player');
     }
 }
