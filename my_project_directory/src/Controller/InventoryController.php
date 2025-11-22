@@ -30,7 +30,7 @@ final class InventoryController extends AbstractController
             'inventories' => $inventories,
         ]);
     }
-    #[Route('/inventory/inventorycreateform', name: 'downloadinv')]
+    #[Route('/inventory/inventorydownload', name: 'downloadinv')]
     public function download(): Response
     {
         $path = $this->getParameter('kernel.project_dir') . '/public/inventories.csv';
